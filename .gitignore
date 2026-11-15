@@ -1,0 +1,12 @@
+/build/
+*.uf2
+*.elf
+*.bin
+*.hex
+*.map
+*.dis
+# generated web bundle
+src/web_assets.h
+# local toolchain/sdk (kept outside repo anyway)
+/pico-sdk/
+arm-toolchain.zip

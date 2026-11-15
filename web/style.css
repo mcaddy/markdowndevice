@@ -1,0 +1,109 @@
+/* Markdown editor styles. Tuned for high-contrast, e-ink friendly reading:
+   large type, generous spacing, no reliance on colour to convey meaning. */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #111;
+  background: #fff;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 16px;
+}
+h1 { font-size: 1.6em; margin: 0.2em 0 0.6em; }
+h2 { font-size: 1.2em; margin: 0 0 0.5em; }
+a { color: #000; }
+
+.card {
+  border: 2px solid #000;
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+.card h2 { border-bottom: 1px solid #999; padding-bottom: 4px; }
+
+ul.docs { list-style: none; padding: 0; margin: 0; }
+ul.docs li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 1px solid #ddd;
+}
+ul.docs li.empty { color: #666; font-style: italic; border: none; }
+a.doc { font-weight: bold; flex: 1 1 auto; min-width: 140px; text-decoration: none; }
+a.doc:hover { text-decoration: underline; }
+.sz { color: #555; font-size: 0.8em; font-family: monospace; }
+
+.btn {
+  display: inline-block;
+  border: 2px solid #000;
+  background: #fff;
+  color: #000;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85em;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn:hover { background: #000; color: #fff; }
+.btn.primary { font-weight: bold; }
+.btn.danger { border-style: dashed; }
+form.inline { display: inline; margin: 0; }
+
+input[type=text], input[type=file] {
+  font-size: 1em;
+  padding: 6px 8px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  font-family: inherit;
+}
+input[type=text] { width: 60%; margin-right: 8px; }
+
+/* editor */
+.topbar { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+.topbar .fname { flex: 1 1 auto; font-size: 1.2em; margin: 0; font-family: monospace; }
+.panes { display: flex; gap: 12px; align-items: stretch; }
+textarea#src {
+  flex: 1 1 50%;
+  min-height: 60vh;
+  font-family: "Courier New", monospace;
+  font-size: 15px;
+  line-height: 1.45;
+  padding: 10px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  resize: vertical;
+  width: 100%;
+}
+.preview {
+  flex: 1 1 50%;
+  min-height: 60vh;
+  padding: 10px 14px;
+  border: 2px solid #999;
+  border-radius: 4px;
+  overflow-wrap: break-word;
+}
+.preview pre {
+  background: #f2f2f2;
+  border: 1px solid #ccc;
+  padding: 8px;
+  overflow-x: auto;
+}
+.preview code { font-family: "Courier New", monospace; background: #f2f2f2; padding: 0 3px; }
+.preview blockquote { border-left: 4px solid #999; margin: 0.5em 0; padding-left: 12px; color: #333; }
+.preview img { max-width: 100%; }
+.actions { margin-top: 12px; display: flex; align-items: center; gap: 12px; }
+.muted { color: #666; font-size: 0.85em; }
+.warn { border: 2px dashed #000; padding: 12px; }
+
+/* Stack the editor panes on narrow / e-ink screens. */
+@media (max-width: 700px) {
+  .panes { flex-direction: column; }
+  textarea#src, .preview { min-height: 40vh; }
+  input[type=text] { width: 100%; margin: 0 0 8px; }
+}
